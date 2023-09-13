@@ -1,0 +1,251 @@
+{
+  "info": {
+    "version": "1.0",
+    "description": "This API can be used to Create, Read, Modify & Delete Users",
+    "title": "Users"
+  },
+  "paths": {
+    "/createUser": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userName": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/getUsers": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "users": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "description": "User Tags to filter by",
+            "items": {
+              "type": "string"
+            },
+            "default": [
+              "basic"
+            ],
+            "required": true,
+            "name": "tags",
+            "in": "query",
+            "type": "array",
+            "collectionFormat": "multi"
+          },
+          {
+            "description": "User Types to filter by",
+            "default": [
+              "basic"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "types",
+            "in": "query",
+            "type": "array",
+            "collectionFormat": "multi"
+          },
+          {
+            "description": "Client Secret to filter by",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "name": "secret"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/getUser/{userId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "description": "ID of user that needs to be fetched",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/updateUser/{userId}": {
+      "patch": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "description": "ID of user that needs to be fetched",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ]
+      },
+      "put": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "description": "ID of user that needs to be fetched",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ]
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "description": "ID of user that needs to be fetched",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/deleteUser/{userId}": {
+      "delete": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "description": "ID of user that needs to be fetched",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "tags": [
+    {
+      "externalDocs": {
+        "url": "http://users.io",
+        "description": "Find out more about our Users"
+      },
+      "name": "Users",
+      "description": "Operations about user"
+    }
+  ],
+  "basePath": "/mock/api/path",
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "host": "sm-mbp-testSpecification:9503",
+  "security": [
+    {
+      "basicAuth": []
+    }
+  ],
+  "swagger": "2.0"
+}
